@@ -29,41 +29,43 @@ public class OtherCommandeController {
 
 	private final CommandeRepository commandeDao;
 
-    private final RepositoryEntityLinks entityLinks;
+	private final RepositoryEntityLinks entityLinks;
 
-    private final DefaultFormattingConversionService conversionService;
+	private final DefaultFormattingConversionService conversionService;
 
-    // Injection de dépendance (@Autowired)
-	public OtherCommandeController(CommandeService commandeService, CommandeRepository commandeDao, RepositoryEntityLinks entityLinks, DefaultFormattingConversionService conversionService) {
+	// Injection de dépendance (@Autowired)
+	public OtherCommandeController(CommandeService commandeService, CommandeRepository commandeDao,
+			RepositoryEntityLinks entityLinks, DefaultFormattingConversionService conversionService) {
 		this.commandeService = commandeService;
 		this.commandeDao = commandeDao;
-        this.entityLinks = entityLinks;
-        this.conversionService = conversionService;
-    }
+		this.entityLinks = entityLinks;
+		this.conversionService = conversionService;
+	}
 
 	@GetMapping("projection/{commandeNum}")
 	public CommandeProjection projection(@PathVariable Integer commandeNum) {
 		return commandeDao.findProjectionByNumero(commandeNum);
 	}
 
-    @GetMapping("deserialize")
-    public ResponseEntity<EntityModel<Commande>> deserialize(@RequestParam String commandeURI) {
-        final URI uri = URI.create(commandeURI);
-        Commande commande = conversionService.convert(uri, Commande.class);
-        return commande != null ? ResponseEntity.ok(EntityModel.of(commande)) : ResponseEntity.notFound().build();
-    }
+	@GetMapping("deserialize")
+	public ResponseEntity<EntityModel<Commande>> deserialize(@RequestParam String commandeURI) {
+		final URI uri = URI.create(commandeURI);
+		Commande commande = conversionService.convert(uri, Commande.class);
+		return commande != null ? ResponseEntity.ok(EntityModel.of(commande)) : ResponseEntity.notFound().build();
+	}
 
-	@GetMapping("ajouterPourClient/{clientCode}")
-	public EntityModel<Commande> ajouterEntity(@PathVariable @NonNull String clientCode) {
-        var commande = commandeService.creerCommande(clientCode);
-        Link selfLink = entityLinks.linkToItemResource(Commande.class, commande.getNumero()).withSelfRel();
+	@GetMapping("ajouterPourDispensaire/{codeDispensaire}")
+	public EntityModel<Commande> ajouterEntity(@PathVariable @NonNull String codeDispensaire) {
+		var commande = commandeService.creerCommande(codeDispensaire);
+		Link selfLink = entityLinks.linkToItemResource(Commande.class, commande.getNumero()).withSelfRel();
 		return EntityModel.of(commande, selfLink);
-    }
+	}
 
 	@GetMapping("ajouterRedirect")
-	public RedirectView ajouterLigneRedirect(@RequestParam int commandeNum, @RequestParam int produitRef, @RequestParam int quantite) {
+	public RedirectView ajouterLigneRedirect(@RequestParam int commandeNum, @RequestParam int produitRef,
+			@RequestParam int quantite) {
 		var ligne = commandeService.ajouterLigne(commandeNum, produitRef, quantite);
-        Link selfLink = entityLinks.linkToItemResource(Ligne.class, ligne.getId());
+		Link selfLink = entityLinks.linkToItemResource(Ligne.class, ligne.getId());
 		return new RedirectView(selfLink.getHref());
 	}
 
