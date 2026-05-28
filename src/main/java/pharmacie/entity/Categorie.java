@@ -2,6 +2,8 @@ package pharmacie.entity;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -35,4 +37,7 @@ public class Categorie {
 	@JsonIgnoreProperties({"categorie", "lignes"})
 	private List<Medicament> medicaments = new LinkedList<>();
 
+	@ManyToMany(mappedBy = "categories")
+	@JsonIgnoreProperties("categories")
+	private Set<Fournisseur> fournisseurs = new HashSet<>();
 }

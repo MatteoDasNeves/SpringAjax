@@ -180,4 +180,34 @@ INSERT INTO LIGNE (COMMANDE_NUMERO, MEDICAMENT_REFERENCE, QUANTITE) VALUES
 (5, 5, 95), (5, 15, 70), (5, 25, 75), (5, 35, 50), (5, 81, 40),
 (6, 6, 110), (6, 16, 65), (6, 26, 85), (6, 36, 60), (6, 91, 70),
 (7, 7, 80), (7, 17, 50), (7, 27, 95), (7, 37, 55), (7, 100, 45),
-(8, 8, 100), (8, 18, 75), (8, 28, 80), (8, 38, 70), (8, 48, 60);
+(8, 8, 100), (8, 18, 75), (8, 28, 80), (8, 48, 60);
+INSERT INTO FOURNISSEUR (NOM, EMAIL) VALUES
+('MedSupply', 'medsupply+1@gmail.com'),
+('HealthGlobal', 'healthglobal+1@gmail.com'),
+('PharmaDirect', 'pharmadirect+1@gmail.com'),
+('BioLife', 'biolife+1@gmail.com');
+
+-- Association fournisseurs - catégories (Chaque catégorie par au moins 2 fournisseurs)
+-- Catégorie 1: Antalgiques (1) -> MedSupply, HealthGlobal
+-- Catégorie 2: Anti-inflammatoires (2) -> HealthGlobal, PharmaDirect
+-- Catégorie 3: Antibiotiques (3) -> PharmaDirect, BioLife
+-- Catégorie 4: Antihypertenseurs (4) -> BioLife, MedSupply
+-- Catégorie 5: Antidiabétiques (5) -> MedSupply, PharmaDirect
+-- Catégorie 6: Antihistaminiques (6) -> HealthGlobal, BioLife
+-- Catégorie 7: Vitamines (7) -> MedSupply, PharmaDirect
+-- Catégorie 8: Cardiovasculaires (8) -> HealthGlobal, BioLife
+-- Catégorie 9: Gastro (9) -> MedSupply, BioLife
+-- Catégorie 10: Respiratoires (10) -> HealthGlobal, PharmaDirect
+
+INSERT INTO FOURNISSEUR_CATEGORIE (FOURNISSEUR_ID, CATEGORIE_CODE) VALUES
+(1, 1), (2, 1),
+(2, 2), (3, 2),
+(3, 3), (4, 3),
+(4, 4), (1, 4),
+(1, 5), (3, 5),
+(2, 6), (4, 6),
+(1, 7), (3, 7),
+(2, 8), (4, 8),
+(1, 9), (4, 9),
+(2, 10), (3, 10);
+
