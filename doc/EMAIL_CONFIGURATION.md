@@ -18,4 +18,10 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 
 ## Utilisation
 La classe `org.springframework.mail.javamail.JavaMailSender` permet d'envoyer des emails de manière simple et asynchrone si nécessaire.
-Dans le service métier `ApprovisionnementService`, nous utilisons `SimpleMailMessage` pour construire et envoyer le message.
+## Déploiement (ex: Render)
+Pour le déploiement, les variables d'environnement suivantes doivent être configurées :
+- `JDBC_URI` : URL de connexion à la base de données PostgreSQL.
+- `MAIL_HOST` : Hôte du serveur SMTP.
+- `MAIL_PORT` : Port du serveur SMTP (défaut: 587).
+- `MAIL_USERNAME` : Nom d'utilisateur SMTP.
+- `MAIL_PASSWORD` : Mot de passe SMTP.

@@ -18,8 +18,8 @@ ALTER TABLE Categorie ALTER COLUMN code RESTART WITH 11;
 
 -- Catégorie 1: Antalgiques et Antipyrétiques
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
-('Paracétamol 500mg', 1, 'Boîte de 16 comprimés', 2.50, 500, 0, 50, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
-('Paracétamol 1000mg', 1, 'Boîte de 8 comprimés', 3.20, 350, 0, 40, false, 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400'),
+('Paracétamol 500mg', 1, 'Boîte de 16 comprimés', 2.50, 40, 0, 50, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
+('Paracétamol 1000mg', 1, 'Boîte de 8 comprimés', 3.20, 30, 0, 40, false, 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400'),
 ('Ibuprofène 200mg', 1, 'Boîte de 20 comprimés', 3.80, 400, 0, 45, false, 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=400'),
 ('Ibuprofène 400mg', 1, 'Boîte de 12 comprimés', 4.50, 320, 0, 35, false, 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400'),
 ('Aspirine 500mg', 1, 'Boîte de 20 comprimés', 2.90, 450, 0, 50, false, 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400'),
@@ -31,7 +31,7 @@ INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, 
 
 -- Catégorie 2: Anti-inflammatoires
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
-('Diclofénac 50mg', 2, 'Boîte de 20 comprimés', 5.60, 300, 0, 35, false, 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=400'),
+('Diclofénac 50mg', 2, 'Boîte de 20 comprimés', 5.60, 20, 0, 35, false, 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=400'),
 ('Kétoprofène 100mg', 2, 'Boîte de 12 gélules', 6.80, 250, 0, 30, false, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400'),
 ('Naproxène 550mg', 2, 'Boîte de 16 comprimés', 7.20, 200, 0, 25, false, 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400'),
 ('Célécoxib 200mg', 2, 'Boîte de 30 gélules', 15.90, 180, 0, 20, false, 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=400'),
